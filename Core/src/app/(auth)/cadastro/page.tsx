@@ -10,6 +10,7 @@ export default function RegisterPage() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [acceptedTerms, setAcceptedTerms] = useState(false);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const router = useRouter();
@@ -123,10 +124,27 @@ export default function RegisterPage() {
             </div>
           </div>
 
+          <div className="flex items-start gap-3 mt-2">
+            <input 
+              type="checkbox" 
+              id="terms" 
+              checked={acceptedTerms}
+              onChange={(e) => setAcceptedTerms(e.target.checked)}
+              className="mt-1 w-5 h-5 rounded border-brand-graphite/20 text-brand-teal focus:ring-brand-teal"
+            />
+            <label htmlFor="terms" className="text-sm text-brand-graphite/70">
+              Eu li e concordo com a{" "}
+              <Link href="/privacidade" target="_blank" className="font-bold text-brand-teal hover:underline">Política de Privacidade</Link>
+              {" "}e os{" "}
+              <Link href="/termos" target="_blank" className="font-bold text-brand-teal hover:underline">Termos de Uso</Link>
+              .
+            </label>
+          </div>
+
           <button 
             type="submit" 
-            disabled={loading}
-            className="w-full mt-2 py-3 px-4 bg-brand-teal hover:bg-brand-teal/90 text-white font-bold rounded-xl shadow-lg shadow-brand-teal/20 transition-all flex justify-center items-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
+            disabled={loading || !acceptedTerms}
+            className="w-full mt-2 py-3 px-4 bg-brand-teal hover:bg-brand-teal/90 text-white font-bold rounded-xl shadow-lg shadow-brand-teal/20 transition-all flex justify-center items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {loading ? "Criando..." : "Criar Conta"}
             {!loading && <ArrowRight className="w-5 h-5" />}

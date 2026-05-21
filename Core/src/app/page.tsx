@@ -69,6 +69,23 @@ export default function Home() {
           </Link>
         </section>
       </main>
+
+      {/* Footer LGPD */}
+      <footer className="w-full bg-brand-white border-t border-brand-graphite/10 py-6 mt-12">
+        <div className="max-w-4xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className="text-sm text-brand-graphite/50 font-medium">
+            &copy; {new Date().getFullYear()} NeuroSync. Todos os direitos reservados.
+          </p>
+          <div className="flex items-center gap-6 text-sm font-semibold">
+            <Link href="/privacidade" className="text-brand-graphite/60 hover:text-brand-teal transition-colors">
+              Política de Privacidade
+            </Link>
+            <Link href="/termos" className="text-brand-graphite/60 hover:text-brand-teal transition-colors">
+              Termos de Uso
+            </Link>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
