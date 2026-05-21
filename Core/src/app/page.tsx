@@ -30,9 +30,9 @@ export default function Home() {
                 <span className="hidden sm:inline">Histórico</span>
               </Link>
               <div className="flex items-center bg-brand-light rounded-full border border-brand-graphite/10 shadow-sm">
-                <div className="flex items-center gap-2 px-3 py-1.5 text-sm font-semibold text-brand-graphite border-r border-brand-graphite/10">
+                <div className="flex items-center gap-2 px-2 sm:px-3 py-1.5 text-sm font-semibold text-brand-graphite border-r border-brand-graphite/10">
                   <UserIcon className="w-4 h-4 shrink-0" />
-                  <span className="max-w-[80px] sm:max-w-[150px] truncate">{username || user.email?.split('@')[0]}</span>
+                  <span className="hidden sm:inline max-w-[150px] truncate">{username || user.email?.split('@')[0]}</span>
                 </div>
                 <button onClick={logout} className="p-2 text-red-500 hover:text-red-700 hover:bg-red-50 rounded-r-full transition-colors" title="Sair da conta">
                   <LogOut className="w-4 h-4 shrink-0" />
@@ -40,9 +40,9 @@ export default function Home() {
               </div>
             </>
           ) : (
-            <Link href="/login" className="flex items-center gap-2 px-4 py-2 text-sm font-bold text-white bg-brand-blue rounded-full shadow hover:bg-brand-blue/90 hover:shadow-md transition-all">
+            <Link href="/login" className="flex items-center gap-2 px-3 sm:px-4 py-2 text-sm font-bold text-white bg-brand-blue rounded-full shadow hover:bg-brand-blue/90 hover:shadow-md transition-all">
               <LogIn className="w-4 h-4" />
-              Entrar
+              <span className="hidden sm:inline">Entrar</span>
             </Link>
           )}
           
