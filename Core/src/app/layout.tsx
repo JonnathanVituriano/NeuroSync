@@ -22,6 +22,8 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { CookieBanner } from "@/components/CookieBanner";
+import { Analytics } from "@/components/Analytics";
 
 export default function RootLayout({
   children,
@@ -36,8 +38,10 @@ export default function RootLayout({
             {children}
             <ThemeToggle />
             <SpeedInsights />
+            <CookieBanner />
           </ThemeProvider>
         </AuthProvider>
+        <Analytics />
       </body>
     </html>
   );
