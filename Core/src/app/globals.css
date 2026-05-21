@@ -1,0 +1,40 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-brand-graphite: var(--theme-graphite);
+  --color-brand-blue: var(--theme-blue);
+  --color-brand-teal: var(--theme-teal);
+  --color-brand-light: var(--theme-light);
+  --color-brand-white: var(--theme-white);
+  
+  --font-sans: var(--font-montserrat), sans-serif;
+}
+
+:root {
+  --theme-graphite: #4A4F55;
+  --theme-blue: #0F5FA8;
+  --theme-teal: #1FB7B6;
+  --theme-light: #E6E8EB;
+  --theme-white: #FFFFFF;
+  --background: #E6E8EB;
+  --foreground: #4A4F55;
+}
+
+.dark {
+  --theme-graphite: #f8fafc; /* Texto claro no modo escuro */
+  --theme-blue: #3b82f6; /* Azul mais vibrante no escuro */
+  --theme-teal: #2dd4bf; /* Teal mais vibrante no escuro */
+  --theme-light: #0f172a; /* Fundo principal escuro (Slate 900) */
+  --theme-white: #1e293b; /* Fundo dos cartões escuro (Slate 800) */
+  --background: #0f172a;
+  --foreground: #f8fafc;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
