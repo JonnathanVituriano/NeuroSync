@@ -115,7 +115,7 @@ export default function Resultado() {
 
       const blob = await (await fetch(dataUrl)).blob();
       const file = new File([blob], 'meu-perfil-neurosync.png', { type: 'image/png' });
-      const SHARE_URL = 'https://neurosync.com.br'; // Domínio fictício/genérico
+      const SHARE_URL = 'https://neuro-sync-ruby.vercel.app';
       const SHARE_TEXT = `Acabei de descobrir que meu Perfil Comportamental PNL é o ${result.profile.nome}! Descubra o seu também no aplicativo NeuroSync:`;
 
       if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
@@ -209,7 +209,7 @@ export default function Resultado() {
         </div>
         
         <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '24px', marginTop: '50px' }}>
-          Descubra o seu perfil em: <strong>www.neurosync.com.br</strong>
+          Faça o teste gratuito em: <strong>neuro-sync-ruby.vercel.app</strong>
         </p>
       </div>
 
