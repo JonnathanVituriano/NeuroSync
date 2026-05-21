@@ -14,27 +14,27 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-brand-white text-brand-graphite font-sans">
-      <header className="pt-12 pb-6 px-6 flex justify-between items-center bg-brand-white sticky top-0 z-10">
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-brand-teal to-brand-blue flex items-center justify-center shadow-md">
-            <div className="w-4 h-4 rounded-full bg-brand-white opacity-90" />
+      <header className="pt-10 pb-6 px-4 md:px-6 flex flex-wrap justify-between items-center bg-brand-white sticky top-0 z-10 gap-y-4">
+        <div className="flex items-center gap-2 md:gap-3">
+          <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-gradient-to-tr from-brand-teal to-brand-blue flex items-center justify-center shadow-md shrink-0">
+            <div className="w-3 h-3 md:w-4 md:h-4 rounded-full bg-brand-white opacity-90" />
           </div>
-          <h1 className="text-2xl font-black text-brand-blue tracking-tight">NeuroSync</h1>
+          <h1 className="text-xl md:text-2xl font-black text-brand-blue tracking-tight">NeuroSync</h1>
         </div>
         
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 flex-wrap justify-end">
           {user ? (
             <>
               <Link href="/historico" className="flex items-center gap-2 px-3 py-1.5 text-sm font-semibold text-brand-blue bg-brand-blue/10 rounded-full hover:bg-brand-blue/20 transition-colors">
-                <History className="w-4 h-4" />
-                Histórico
+                <History className="w-4 h-4 shrink-0" />
+                <span className="hidden sm:inline">Histórico</span>
               </Link>
               <div className="group relative">
                 <button className="flex items-center gap-2 px-3 py-1.5 text-sm font-semibold text-brand-graphite bg-brand-light rounded-full border border-brand-graphite/10 hover:border-brand-graphite/30 transition-colors">
-                  <UserIcon className="w-4 h-4" />
-                  {username || user.email?.split('@')[0]}
+                  <UserIcon className="w-4 h-4 shrink-0" />
+                  <span className="max-w-[80px] sm:max-w-[150px] truncate">{username || user.email?.split('@')[0]}</span>
                 </button>
-                <div className="absolute right-0 top-full mt-2 w-48 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all bg-white rounded-xl shadow-xl border border-brand-light p-2 z-50">
+                <div className="absolute right-0 top-full mt-2 w-48 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all bg-brand-white rounded-xl shadow-xl border border-brand-light p-2 z-50">
                   <button onClick={logout} className="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50 rounded-lg font-medium">
                     Sair da conta
                   </button>
@@ -47,10 +47,11 @@ export default function Home() {
               Entrar
             </Link>
           )}
+          )}
+          
+          {/* Renderiza o botão de instalação apenas quando disponível */}
+          <InstallPWAButton />
         </div>
-        
-        {/* Renderiza o botão de instalação apenas quando disponível */}
-        <InstallPWAButton />
       </header>
 
       <main className="px-6 pt-6 flex flex-col gap-8">
