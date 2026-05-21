@@ -47,7 +47,6 @@ export default function Home() {
               Entrar
             </Link>
           )}
-          )}
           
           {/* Renderiza o botão de instalação apenas quando disponível */}
           <InstallPWAButton />
