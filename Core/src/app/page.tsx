@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, Brain, Target, ShieldAlert, Sparkles, CheckSquare, Settings, LogIn, History, User as UserIcon, ClipboardList } from "lucide-react";
+import { ArrowRight, Brain, Target, ShieldAlert, Sparkles, CheckSquare, Settings, LogIn, History, User as UserIcon, ClipboardList, LogOut } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
@@ -29,16 +29,14 @@ export default function Home() {
                 <History className="w-4 h-4 shrink-0" />
                 <span className="hidden sm:inline">Histórico</span>
               </Link>
-              <div className="group relative">
-                <button className="flex items-center gap-2 px-3 py-1.5 text-sm font-semibold text-brand-graphite bg-brand-light rounded-full border border-brand-graphite/10 hover:border-brand-graphite/30 transition-colors">
+              <div className="flex items-center bg-brand-light rounded-full border border-brand-graphite/10 shadow-sm">
+                <div className="flex items-center gap-2 px-3 py-1.5 text-sm font-semibold text-brand-graphite border-r border-brand-graphite/10">
                   <UserIcon className="w-4 h-4 shrink-0" />
                   <span className="max-w-[80px] sm:max-w-[150px] truncate">{username || user.email?.split('@')[0]}</span>
-                </button>
-                <div className="absolute right-0 top-full mt-2 w-48 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all bg-brand-white rounded-xl shadow-xl border border-brand-light p-2 z-50">
-                  <button onClick={logout} className="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50 rounded-lg font-medium">
-                    Sair da conta
-                  </button>
                 </div>
+                <button onClick={logout} className="p-2 text-red-500 hover:text-red-700 hover:bg-red-50 rounded-r-full transition-colors" title="Sair da conta">
+                  <LogOut className="w-4 h-4 shrink-0" />
+                </button>
               </div>
             </>
           ) : (
