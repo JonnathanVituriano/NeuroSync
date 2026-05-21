@@ -6,12 +6,13 @@ import { useAuth } from "@/contexts/AuthContext";
 import { useAssessmentStore } from "@/store/useAssessmentStore";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { ArrowLeft, History, FileText, ArrowRight } from "lucide-react";
+import { ArrowLeft, History, FileText, ArrowRight, Trash2 } from "lucide-react";
 
 export default function HistoryPage() {
   const { user, loading } = useAuth();
   const [history, setHistory] = useState<any[]>([]);
   const [fetching, setFetching] = useState(true);
+  const [deleting, setDeleting] = useState(false);
   const router = useRouter();
   const setAnswers = useAssessmentStore((state) => state.setAnswers);
 
@@ -45,6 +46,24 @@ export default function HistoryPage() {
     // Carrega as respostas antigas na loja e manda pra página de resultado que vai calcular tudo na hora!
     setAnswers(answers);
     router.push("/resultado");
+  };
+
+  const handleDeleteAccount = async () => {
+    const confirm = window.confirm("Tem certeza absoluta? Isso apagará todos os seus testes e seu acesso permanentemente. Essa ação não pode ser desfeita.");
+    if (!confirm) return;
+
+    setDeleting(true);
+    try {
+      const { error } = await supabase.rpc('delete_user');
+      if (error) throw error;
+      
+      await supabase.auth.signOut();
+      router.push("/");
+    } catch (e) {
+      console.error(e);
+      alert("Erro ao excluir a conta. Certifique-se de que a função SQL foi criada no Supabase.");
+      setDeleting(false);
+    }
   };
 
   if (loading || fetching) {
@@ -113,6 +132,22 @@ export default function HistoryPage() {
               })}
             </div>
           )}
+        </div>
+
+        {/* Zona de Perigo */}
+        <div className="mt-16 pt-8 border-t border-brand-graphite/10 flex flex-col items-center text-center">
+          <h3 className="text-lg font-bold text-brand-graphite mb-2">Zona de Perigo</h3>
+          <p className="text-sm text-brand-graphite/60 mb-6 max-w-md">
+            Ao excluir sua conta, todos os seus dados e históricos de testes serão permanentemente apagados dos nossos servidores.
+          </p>
+          <button 
+            onClick={handleDeleteAccount}
+            disabled={deleting}
+            className="flex items-center gap-2 px-6 py-3 bg-red-50 text-red-600 hover:bg-red-100 hover:text-red-700 rounded-full font-bold transition-colors disabled:opacity-50"
+          >
+            <Trash2 className="w-5 h-5" />
+            {deleting ? "Excluindo..." : "Excluir Minha Conta"}
+          </button>
         </div>
       </main>
     </div>
