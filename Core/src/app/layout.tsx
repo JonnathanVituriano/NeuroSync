@@ -21,6 +21,7 @@ export const viewport: Viewport = {
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { AuthProvider } from "@/contexts/AuthContext";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export default function RootLayout({
   children,
@@ -34,6 +35,7 @@ export default function RootLayout({
           <ThemeProvider>
             {children}
             <ThemeToggle />
+            <SpeedInsights />
           </ThemeProvider>
         </AuthProvider>
       </body>
