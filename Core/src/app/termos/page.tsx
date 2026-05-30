@@ -32,7 +32,7 @@ export default function Termos() {
 
           <h3 className="text-xl font-bold text-brand-blue mt-8 mb-4">2. Conta do Usuário</h3>
           <p className="text-brand-graphite/80 leading-relaxed text-justify">
-            Para acessar o histórico e gerar os relatórios, é necessário criar uma conta. Você é responsável por manter a confidencialidade de sua senha e por todas as atividades que ocorrem sob sua conta. O fornecimento de dados falsos pode resultar no encerramento imediato do seu acesso.
+            Para acessar o histórico e salvar os relatórios permanentemente, é necessário criar uma conta. Você é responsável por manter a confidencialidade de sua senha e por todas as atividades que ocorrem sob sua conta. O fornecimento de dados falsos pode resultar no encerramento imediato do seu acesso. O usuário pode encerrar e excluir sua conta a qualquer momento através da página "Meu Histórico", o que apagará permanentemente todos os registros do sistema.
           </p>
 
           <h3 className="text-xl font-bold text-brand-blue mt-8 mb-4">3. Propriedade Intelectual</h3>

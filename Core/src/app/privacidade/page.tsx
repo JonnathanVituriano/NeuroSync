@@ -47,7 +47,7 @@ export default function Privacidade() {
 
           <h3 className="text-xl font-bold text-brand-blue mt-8 mb-4">4. Seus Direitos</h3>
           <p className="text-brand-graphite/80 leading-relaxed text-justify">
-            Você é livre para recusar a nossa solicitação de informações pessoais, entendendo que talvez não possamos fornecer o serviço de mapeamento de perfil. A qualquer momento, você pode solicitar a exclusão da sua conta e de todos os dados associados entrando em contato conosco.
+            Você é livre para recusar a nossa solicitação de informações pessoais, entendendo que talvez não possamos fornecer o serviço de mapeamento de perfil. A qualquer momento, você tem total autonomia para excluir sua conta e todos os dados associados (resultados de testes) diretamente pelo aplicativo, acessando a página "Meu Histórico" e utilizando a função de exclusão de conta.
           </p>
 
           <div className="mt-12 p-4 bg-brand-light rounded-xl text-center text-sm text-brand-graphite/60">

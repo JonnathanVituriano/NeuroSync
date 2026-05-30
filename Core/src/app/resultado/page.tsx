@@ -4,6 +4,7 @@ import { Target, Share2, RefreshCcw, ShieldAlert, Sparkles, Brain, CheckSquare, 
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useAssessmentStore } from "@/store/useAssessmentStore";
+import { useAuth } from "@/contexts/AuthContext";
 import { useEffect, useState, useMemo, useRef } from "react";
 import { questionsData } from "@/data/questions";
 import { profilesData } from "@/data/profiles";
@@ -27,6 +28,7 @@ function getShortLabel(cat: string) {
 
 export default function Resultado() {
   const router = useRouter();
+  const { user } = useAuth();
   const { answers, resetAssessment } = useAssessmentStore();
   const [loading, setLoading] = useState(true);
   const [isMounted, setIsMounted] = useState(false);
@@ -287,8 +289,22 @@ export default function Resultado() {
         <RadarSection title="Inteligência Emocional" data={result.radarIE} color="#0A457D" />
         <RadarSection title="Finanças" data={result.radarFinancas} color="#2dd4bf" />
 
+        {/* INCENTIVO DE CADASTRO (CTA) */}
+        {!user && (
+          <div className="mt-8 w-full bg-gradient-to-tr from-brand-teal to-brand-blue rounded-3xl p-6 shadow-lg shadow-brand-teal/20 text-center relative overflow-hidden">
+            <div className="absolute -top-10 -right-10 w-32 h-32 bg-white/10 rounded-full blur-xl"></div>
+            <h3 className="text-xl font-black text-white mb-2">Não perca o seu resultado!</h3>
+            <p className="text-white/80 text-[15px] mb-5 leading-relaxed">
+              Você não está logado. Crie uma conta gratuita agora mesmo para salvar este relatório permanentemente no seu Histórico e acompanhar sua evolução.
+            </p>
+            <Link href="/cadastro" className="inline-flex items-center gap-2 bg-white text-brand-blue px-6 py-3 rounded-xl font-bold text-[15px] shadow-md hover:scale-105 active:scale-95 transition-transform">
+              <Download size={18} /> Salvar meu Resultado
+            </Link>
+          </div>
+        )}
+
         {/* BOTOES DE AÇÃO */}
-        <div className="mt-12 flex flex-col items-center gap-4 w-full bg-brand-white p-6 rounded-3xl shadow-sm border border-brand-graphite/5">
+        <div className="mt-6 flex flex-col items-center gap-4 w-full bg-brand-white p-6 rounded-3xl shadow-sm border border-brand-graphite/5">
           
           <h3 className="text-[16px] font-black text-brand-graphite mb-1">Incrível, não acha?</h3>
           <p className="text-sm text-brand-graphite/60 text-center mb-4">Compartilhe sua descoberta no Instagram, WhatsApp ou onde quiser!</p>
